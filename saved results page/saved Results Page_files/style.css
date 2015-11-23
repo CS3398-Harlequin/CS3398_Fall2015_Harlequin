@@ -1,5 +1,3 @@
-/* A Free Design by Bryant Smith (bryantsmith.com) */
-
 html, body {
 text-align: center;
 }
@@ -158,3 +156,6 @@ text-decoration:none;
 color:#000000;
 }
 
+.under-limit { background-color: rgba(255, 0, 0, 0.3); }
+.over-limit { background-color: rgba(0, 200, 50, 0.3); }
+.neutral { background-color: rgba(0, 0, 0, 0.05); }

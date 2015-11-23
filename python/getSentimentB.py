@@ -1,6 +1,4 @@
-#any string you input returns 0.00 value for sentiment
-#whereas testing on their website gives positive/negative values
-
+#returns sentiment value from given input string
 
 import http.client, urllib.parse, json, string, sys
 
@@ -8,7 +6,7 @@ def getSentiment(text, ID):
     usr = 'venusinfurs'
     pwd = '1a2MMbrRuN98Id1HtGf3'   
     service='/WS_Nops_Val/Service.aspx'
-    params = urllib.parse.urlencode({'User': '%s' % usr, 'Pass': '%s' %pwd, 'ID': '%s' %ID, 'Text': '%s' % text, 'Detail': 'Global', 'OutFormat':'JSON', 'Normalized': 'No', 'Theme': 'Gen'})
+    params = urllib.parse.urlencode({'User': '%s' % usr, 'Pass': '%s' %pwd, 'ID': '%s' %ID, 'Text': '%s' % text, 'Detail': 'Global', 'OutFormat':'JSON', 'Normalized': 'No', 'Theme': 'Gen', 'Lang': 'Eng'})
     headers = {"Content-type": "application/x-www-form-urlencoded"}
     server="svc8.bitext.com"    
     
@@ -18,9 +16,11 @@ def getSentiment(text, ID):
     response = conn.getresponse()
     data = response.read()
     conn.close() 
-    return data
+    
+    result = json.loads(data.decode(sys.stdout.encoding))
+    
+    result = result['data'][0]['global_value']
+    return result
     
     
-analysis_string = getSentiment('Happy happy love peace', 123)
-
-print((analysis_string).decode(sys.stdout.encoding))
+#print(getSentiment('Happy happy love peace', 123))

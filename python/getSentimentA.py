@@ -7,8 +7,9 @@ import sys
 import semantria
 import uuid
 import time
-
-def getSentiment(consumerKey, consumerSecret, textdata):
+consumerKey='98b874ca-20a3-4a5f-b949-ced443c86922'
+consumerSecret='54091b0a-5f38-41bc-95a0-aa8518e7d158'
+def getSentiment(textdata, ID):
 
     # Task statuses
     TASK_STATUS_UNDEFINED = 'UNDEFINED'
@@ -74,24 +75,22 @@ def getSentiment(consumerKey, consumerSecret, textdata):
             print("Unexpected error!")
             sys.exit(1)
         print("{0} documents queued successfully.".format(len(documents)))
-
-    while len(list(filter(lambda x: x == TASK_STATUS_QUEUED, tracker.values()))):
+        
+    x = 0    
+    while len(list(filter(lambda x: x == TASK_STATUS_QUEUED, tracker.values()))) and x<5:
         time.sleep(1)
-        print("Waiting for results...")
-
+        print("...")
         response = session.getProcessedDocuments()
         for item in response:
             if item['id'] in tracker:
                 tracker[item['id']] = item['status']
                 results.append(item)
+        x += 1
+    if (x >= 5): return 0.0
 
     for data in results:
         # Printing of document sentiment score
         #print("Document {0} / Sentiment score: {1}".format(data['id'], data['sentiment_score']))
         return(data['sentiment_score'])
-
-    print("Done!")
-
-print(getSentiment("98b874ca-20a3-4a5f-b949-ced443c86922", 
-                   "54091b0a-5f38-41bc-95a0-aa8518e7d158", 
-                   "@cityofaustin I love my software engineering class #yolo #swag"))
+    
+#print(getSentiment("@cityofaustin I love my software engineering class #yolo #swag", 123))
