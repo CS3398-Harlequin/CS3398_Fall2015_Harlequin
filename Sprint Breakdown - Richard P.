@@ -1,0 +1,15 @@
+Richard Peyre-Ferry
+
+Sprint 2 Breakdown (aka Sprint 1)
+During this sprint I mainly familiarized myself with Python and the sentiment analyze program since I had 
+no prior experience with either. I also started looking into using Django with python.
+
+Sprint 3 Breakdown (aka Sprint 2)	
+For the second sprint I mainly concentrated on figuring out how to use Django with python through videos 
+and trying different examples.
+
+video – https://www.youtube.com/watch?v=obJr6zH0C2Q 
+online example - https://docs.djangoproject.com/en/1.8/intro/tutorial01/
+
+In the end I was unsuccessful at getting a working webpage with Django so we ended up using a similar program 
+known as Flask.
