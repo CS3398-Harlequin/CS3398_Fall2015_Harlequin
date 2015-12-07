@@ -1,0 +1,7 @@
+Terminology
+http://stackoverflow.com/questions/14894768/git-fetch-vs-pull-merge-vs-rebase
+http://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push
+(helpful image there ^)
+
+Overall Cheat Sheet
+http://ndpsoftware.com/git-cheatsheet.html
